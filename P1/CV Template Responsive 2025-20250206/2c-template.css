@@ -11,13 +11,30 @@ float: left;
 padding: 10px;
 min-height: 500px;
 }
+.viciz{
+  float: left;
+  width: 50%;
 
+}
+
+.vicder{
+  float: right;
+  width: 50%;
+
+}
 .izquierda {
+  color: pink;
 width: 25%;
 }
 
 .derecha {
+  color: palevioletred;
 width: 75%;
+}
+
+.video {
+  text-align: center
+  /*width: 50%*/
 }
 
 /* Clear floats despues de las columnas para eliminar la superposición */

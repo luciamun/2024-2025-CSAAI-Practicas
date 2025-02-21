@@ -1,9 +1,8 @@
 # Práctica 0
 
+Probando el VS code
+
 
 ***********************
-**  Mi segundo cambio....
-*************************
-
-
-2º Commit
+** MI SEGUNDO CAMBIO **
+***********************
