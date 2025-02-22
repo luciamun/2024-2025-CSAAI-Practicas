@@ -10,13 +10,32 @@
    <link rel="stylesheet" href="2c-template.css">    
 
 </head>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const audio = document.getElementById("panteraMusic");
+        const button = document.getElementById("playMusic");
+
+        button.addEventListener("click", function() {
+            if (audio.paused) {
+                audio.play().catch(error => console.error("Error al reproducir:", error));
+                button.textContent = "⏸ Pausar";
+                button.style.backgroundColor = "deeppink"; // Cambia el color al reproducir
+            } else {
+                audio.pause();
+                button.textContent = "▶️ Music";
+                button.style.backgroundColor = "rgb(201, 90, 127)"; // Color original
+            }
+        });
+    });
+</script>
+
 <body>
     
     <h2>Curriculum Vitae
     </h2>
 
     <div class="fila">
-      <div id="c1" class="columna izquierda">
+      <div id="c1" class="columna izquierda"> 
         <h2>Pantera Rosa</h2>
         <div class="iresponsive">
             <img id="imghtml" src="perfilpantera.jpg" alt="perfilpantera" width="500" height="500">
@@ -32,7 +51,11 @@
             <li>💌 Correo: panterarosa@smoothmoves.com</li>
             <li>🌐 Web:<a href="https://es.wikipedia.org/wiki/La_pantera_rosa_(pel%C3%ADcula_de_1963)">www.pinkpantherstyle.com</a></li>
         </ul>
-        <button>Music</button>
+        
+        <button id="playMusic">Music </button>
+        <audio id="panteraMusic">
+            <source src="panteraMusic.mp3" type="audio/mpeg">
+        </audio>
       </div>
 
       <div id="c2" class="columna derecha">
@@ -76,7 +99,7 @@
         <div class="columna vicder">
             <h2>Referencias:</h2>
         <div id="cancion" class="video" ALIGN= "center">
-            <iframe width="200" height="100" src="https://www.youtube.com/embed/iKyqHNVeZq8?si=cMhpDVmBzt4e-hMS" 
+            <iframe width="440" height="250" src="https://www.youtube.com/embed/iKyqHNVeZq8?si=cMhpDVmBzt4e-hMS" 
             title="YouTube video player" 
             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

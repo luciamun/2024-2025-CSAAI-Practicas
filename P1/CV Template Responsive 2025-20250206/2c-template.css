@@ -23,12 +23,12 @@ min-height: 500px;
 
 }
 .izquierda {
-  color: pink;
+background-color: pink; 
 width: 25%;
 }
 
 .derecha {
-  color: palevioletred;
+background-color: palevioletred;
 width: 75%;
 }
 
@@ -45,13 +45,17 @@ clear: both;
 }
 
 #c1 {
-    background-color:#aaa;
+    background-color:pink;
 }
 
 #c2 {
-    background-color:#bbb;
+    background-color:palevioletred;
 }
 
+#playMusic {
+
+  background-color: rgb(201, 90, 127);
+}
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
 /* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
 
