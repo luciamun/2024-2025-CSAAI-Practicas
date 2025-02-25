@@ -6,6 +6,16 @@
   }
   
 /* Crear columnas de ancho diferente que se colocan una a continuación de la otra */
+@font-face {
+  font-family: 'Hobo Std';
+  src: url('Hobo Std/hobostd.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1, h2, h3, h4, a, button {
+  font-family: 'Hobo Std', sans-serif; color: #9a2d74;
+}
 .columna {
 float: left;
 padding: 10px;
