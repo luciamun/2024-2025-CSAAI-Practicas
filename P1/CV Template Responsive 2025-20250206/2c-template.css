@@ -23,12 +23,12 @@ min-height: 500px;
 
 }
 .izquierda {
-background-color: rgba(255, 192, 203, 0.529); 
+background-color: rgba(255, 192, 203, 0.602); 
 width: 25%;
 }
 
 .derecha {
-background-color: rgba(216, 112, 147, 0.552);
+background-color: rgba(216, 112, 147, 0.645);
 width: 75%;
 }
 
@@ -45,11 +45,11 @@ clear: both;
 }
 
 #c1 {
-    background-color:pink;
+    background-color:rgba(255, 192, 203, 0.803);
 }
 
 #c2 {
-    background-color:palevioletred;
+    background-color:rgba(216, 112, 147, 0.527);
 }
 
 #playMusic {
