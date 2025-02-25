@@ -55,23 +55,46 @@ clear: both;
 }
 
 #c1 {
-    background-color:rgba(255, 192, 203, 0.803);
+    background-color:rgba(255, 192, 203, 0.803);border-radius: 5%;
 }
 
 #c2 {
-    background-color:rgba(216, 112, 147, 0.527);
+    background-color:rgba(216, 112, 147, 0.527);border-radius:5%;
 }
 
-#playMusic {
+/*PARA EL ABOUT*/
 
-  background-color: rgb(201, 90, 127);
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
+
+#fond {
+  background-color:rgba(255, 192, 203, 0.803);border-radius: 5%;
+}
+
+.up {
+
+  height: 50;
+}
+
+.down {
+
+  height: 50;
+}
+
+#playMusic:hover {
+  transform: scale(1.1);
+  background-color: rgb(201, 90, 127); border-radius: 5%;
+}
+
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
 /* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
 
-#boton {
-
-  background-color: rgb(201, 90, 127);  
+#boton:hover {
+  transform: scale(1.1);
+  background-color: rgb(201, 90, 127);  border-radius: 5%;
 }
 img {
     width: 100%;
