@@ -5,6 +5,6 @@ Mis prácticas de la asignatura Construcción de Servicios y Aplicaciones Audiov
 Probando vscode github repo
 
 <p>
-    <a href =" https://github.com/luciamun/2024-2025-CSAAI-Practicas/tree/main/P1/CVRESPONSIVE/index.html"> Práctica 1- CV</a>
+    <a href ="https://luciamun.github.io/2024-2025-CSAAI-Practicas/P1/CVRESPONSIVE/index.html"> Práctica 1- CV</a>
 
 </p>
