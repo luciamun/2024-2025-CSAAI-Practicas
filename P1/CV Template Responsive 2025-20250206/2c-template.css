@@ -23,12 +23,12 @@ min-height: 500px;
 
 }
 .izquierda {
-background-color: pink; 
+background-color: rgba(255, 192, 203, 0.529); 
 width: 25%;
 }
 
 .derecha {
-background-color: palevioletred;
+background-color: rgba(216, 112, 147, 0.552);
 width: 75%;
 }
 
@@ -59,6 +59,10 @@ clear: both;
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
 /* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
 
+#boton {
+
+  background-color: rgb(201, 90, 127);  
+}
 img {
     width: 100%;
     height: auto;
