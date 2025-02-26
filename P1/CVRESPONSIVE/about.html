@@ -6,13 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Dos columnas</title>
    <link rel="stylesheet" href="2c-template.css">    
-
+    <!-- CSS de AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
 </head>
 <body>
     <body style="background-image: url('fondo5.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     
     <div class="contenedor">
-        <h1 data-aos="fade-up">¡Bienvenido a conocer a la Pantera Rosa!</h1>
+        <h1 id= "titulo" data-aos="slide-down" data-aos-duration="1500" data-aos-delay="10000">¡Bienvenido a conocer a la Pantera Rosa!</h1>
+        <script>
+            // Espera 10 segundos (10000ms) después de que el texto aparece y luego lo oculta
+            setTimeout(() => {
+                document.getElementById("titulo").style.opacity = "0";
+                document.getElementById("titulo").style.transition = "opacity 2s ease-out"; 
+            }, 4000); // 1000ms de delay + 10000ms de visibilidad
+        </script>
         <div class="fila">
             <div id= c1 class="columna derecha">
 
@@ -32,4 +40,11 @@
             </div>
         </div>
     </div>
+
+    <!-- JS de AOS -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
     </body>
