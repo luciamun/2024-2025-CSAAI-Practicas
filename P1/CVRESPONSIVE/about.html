@@ -9,6 +9,24 @@
     <!-- CSS de AOS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
 </head>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const audio = document.getElementById("panteraMusic");
+        const button = document.getElementById("playMusic");
+
+        button.addEventListener("click", function() {
+            if (audio.paused) {
+                audio.play().catch(error => console.error("Error al reproducir:", error));
+                button.textContent = "⏸ Pausar";
+                button.style.backgroundColor = "deeppink"; // Cambia el color al reproducir
+            } else {
+                audio.pause();
+                button.textContent = "▶️ Music";
+                button.style.backgroundColor = "rgb(201, 90, 127)"; // Color original
+            }
+        });
+    });
+</script>
 <body>
     <body style="background-image: url('fondo5.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     
@@ -22,21 +40,58 @@
             }, 4000); // 1000ms de delay + 10000ms de visibilidad
         </script>
         <div class="fila">
-            <div id= c1 class="columna derecha">
+            <div class="columna derechaabout">
+                <div id="fond" class="up">
+                    <p>
 
+                    </p>
+                    <h1>Mi historia</h1>
+                    <p>Corría el año 1963 cuando un director llamado Blake Edwards decidió hacer una película sobre un valioso diamante llamado La Pantera Rosa. Pero, espera… ¡No se trataba de mí! 😾
+                    </p>
+                    <p>La película giraba en torno a un torpe detective, el Inspector Clouseau, interpretado por Peter Sellers. Era una comedia de enredos sobre el robo de la joya más famosa del mundo.
+                    </p>
+                    <p>
+                        Aunque no era el protagonista de la historia, tuve mi gran oportunidad en los créditos iniciales de la película. 🕶️ La productora United Artists contrató a los animadores Friz Freleng y David DePatie, quienes me crearon como una pantera antropomorfa, con un andar elegante y una actitud desenfadada.
+                        
+                        El resultado fue tan bueno que, aunque la película tuvo éxito, fui yo quien se robó el show. 😏 
+                        
+                        </p>Tanto fue así que la gente preguntaba:
+                        
+                        “¿Dónde está la Pantera Rosa? Queremos ver más de él.”
+                        Y así comenzó mi camino hacia la fama.</p>
+
+                        <p>El primer episodio, "The Pink Phink" (1964), 
+                            fue un éxito total y ganó el Premio Óscar al Mejor Cortometraje Animado.</p>
+                            <p>Este capítulo tenía todos los elementos que me harían inolvidable:</p>
+                            <ul><li>Cero diálogos. Todo se contaba con gestos y situaciones cómicas.</li>
+                            <li>Un humor visual inteligente y sofisticado</li>
+                            <li>Mi banda sonora legendaria</li></ul>
+                </div>
+
+
+            
+                <div id= "fond" class="down">
+                    <h1>Mi Legado: Más Vivo Que Nunca</h1>
+                    <p>Hoy en día, sigo siendo un ícono de la animación. ¿Por qué?</p>
+                    <ul>
+                        <li>Mis episodios clásicos siguen siendo vistos por millones de personas en todo el mundo.</li>
+                        <li>Mi imagen se usa en moda, juguetes y hasta en marcas de aislamiento térmico (¡sí, increíble!).</li>
+                        <li>Mi música sigue sonando en anuncios, eventos y series.</li>
+                    </ul>
+                </div>
 
 
             </div>
 
 
             <div id= c2 class="columna izquierda">
-                <div id="fond" class="up">
-                    <h1>Parte Superior</h1>
+                <div class="iresponsive">
+                    <img id="imghtml" src="poseabout.gif" alt="perfilpantera" width="500" height="500">
                 </div>
-            
-                <div id= "fond" class="down">
-                    <h1>Parte Inferior</h1>
-                </div>
+                <button id="playMusic">Music </button>
+                <audio id="panteraMusic">
+                    <source src="panteraMusic.mp3" type="audio/mpeg">
+                </audio>
             </div>
         </div>
     </div>

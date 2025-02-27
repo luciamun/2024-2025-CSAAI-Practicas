@@ -42,6 +42,9 @@ background-color: rgba(216, 112, 147, 0.645);
 width: 75%;
 }
 
+.derechaabout {
+  width: 75%;
+  }
 .video {
   text-align: center
   /*width: 50%*/
@@ -89,6 +92,15 @@ clear: both;
   background-color: rgb(201, 90, 127); border-radius: 5%;
 }
 
+ul {
+  list-style: none; /* Quita los puntos originales */
+}
+
+ul li::before {
+  content: "🐾 "; /* Emoji de huella */
+  font-size: 20px; /* Ajusta el tamaño */
+  margin-right: 10px; /* Espacio entre el emoji y el texto */
+}
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
 /* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
 
