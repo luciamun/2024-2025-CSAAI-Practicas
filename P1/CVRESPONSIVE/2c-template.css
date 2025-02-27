@@ -107,6 +107,9 @@ ul li::before {
 #boton:hover {
   transform: scale(1.1);
   background-color: rgb(201, 90, 127);  border-radius: 5%;
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
 }
 img {
     width: 100%;
