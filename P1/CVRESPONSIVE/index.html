@@ -13,26 +13,27 @@
     
 
 </head>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const audio = document.getElementById("panteraMusic");
-        const button = document.getElementById("playMusic");
 
-        button.addEventListener("click", function() {
-            if (audio.paused) {
-                audio.play().catch(error => console.error("Error al reproducir:", error));
-                button.textContent = "⏸ Pausar";
-                button.style.backgroundColor = "deeppink"; // Cambia el color al reproducir
-            } else {
-                audio.pause();
-                button.textContent = "▶️ Music";
-                button.style.backgroundColor = "rgb(201, 90, 127)"; // Color original
-            }
-        });
-    });
-</script>
 
 <body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const audio = document.getElementById("panteraMusic");
+            const button = document.getElementById("playMusic");
+    
+            button.addEventListener("click", function() {
+                if (audio.paused) {
+                    audio.play().catch(error => console.error("Error al reproducir:", error));
+                    button.textContent = "⏸ Pausar";
+                    button.style.backgroundColor = "deeppink"; // Cambia el color al reproducir
+                } else {
+                    audio.pause();
+                    button.textContent = "▶️ Music";
+                    button.style.backgroundColor = "rgb(201, 90, 127)"; // Color original
+                }
+            });
+        });
+    </script>
     <body style="background-image: url('fondooo.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
     <h2>Curriculum Vitae
