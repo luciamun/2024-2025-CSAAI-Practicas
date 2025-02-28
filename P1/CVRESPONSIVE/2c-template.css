@@ -4,7 +4,15 @@
 * {
     box-sizing: border-box;
   }
-  
+  body{
+
+    background-image: url('fondooo.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+  }
 /* Crear columnas de ancho diferente que se colocan una a continuación de la otra */
 @font-face {
   font-family: 'Hobo Std';
@@ -68,6 +76,7 @@ clear: both;
 
 /*PARA EL ABOUT*/
 
+#
 .contenedor {
   display: flex;
   flex-direction: column;
@@ -160,6 +169,7 @@ img {
     padding: 0 6px;
     float: left;
     width: 50%;
+
   }
 
 /* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
@@ -173,6 +183,16 @@ img {
     .iresponsive {
         width: 100%;
     }
+
+    body{
+
+    background-image: url('fonomovil1.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+  }
 }
 
 /* Más sobre diseño web responsive https://www.w3schools.com/css/css_rwd_intro.asp */
