@@ -103,8 +103,10 @@ clear: both;
 
 #fond {
   background-color:rgba(255, 192, 203, 0.803);border-radius: 5%;
-  padding: 25px
-
+  padding: 25px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 25px;
 }
 
 .up {
