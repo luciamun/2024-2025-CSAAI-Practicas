@@ -22,6 +22,7 @@ body {
     font-size: 2.5rem;
     color: rgb(207, 39, 39);
   }
+
 .teclao {
 
 font-weight: bold; /* Negrita */
@@ -50,7 +51,63 @@ font-weight: bold; /* Negrita */
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
   }
-  
+
+  #stop {
+
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: rgb(181, 20, 20);
+    border-radius: 10%;
+    width: 8%; /* Un poco más pequeño para que quepan bien */
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+  }
+#stop:hover{
+
+    transform: scale(1.1);
+    z-index: 10; /* Hace que el botón crezca por encima de los demás */
+  }
+  #start {
+
+    background-color: rgb(63, 180, 40);
+    border-radius: 10%;
+    width: 8%; /* Un poco más pequeño para que quepan bien */
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+  }
+
+  #start:hover{
+    transform: scale(1.1);
+    z-index: 10; /* Hace que el botón crezca por encima de los demás */
+  }
+
+#reset
+  {
+    margin-top: 5%;
+    background-color: rgb(63, 180, 40);
+    border-radius: 10%;
+    width: 8%; /* Un poco más pequeño para que quepan bien */
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+  }
+
+  #reset:hover {
+
+    transform: scale(1.1);
+    z-index: 10; /* Hace que el botón crezca por encima de los demás */
+  }
   .digito:hover {
     background-color: rgb(111, 143, 208);
     transform: scale(1.2);
