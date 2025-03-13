@@ -1,0 +1,58 @@
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f3f4f6;
+  }
+  
+  .container {
+    margin-top: 20px;
+  }
+  
+  h1 {
+    color: #333;
+  }
+
+  @font-face {
+    font-family: 'DS-Digital';
+    src: url('DS-DIGI.TTF') format('truetype');
+  }
+  #cronometro {
+    font-family: 'DS-Digital', sans-serif;
+    font-size: 2.5rem;
+    color: rgb(207, 39, 39);
+  }
+.teclao {
+
+font-weight: bold; /* Negrita */
+  font-style: italic; /* Cursiva */
+}
+  
+  .clave-secreta span {
+    font-size: 2rem;
+    margin: 0 10px;
+    color: gray;
+  }
+  .botones {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px; /* Espacio entre botones */
+    width: 100%;
+  }
+  .digito {
+    background-color: rgb(79, 122, 208);
+    border-radius: 10%;
+    width: 8%; /* Un poco más pequeño para que quepan bien */
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .digito:hover {
+    background-color: rgb(111, 143, 208);
+    transform: scale(1.2);
+    z-index: 10; /* Hace que el botón crezca por encima de los demás */
+  }
