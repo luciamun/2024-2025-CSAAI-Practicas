@@ -118,28 +118,32 @@ font-weight: bold; /* Negrita */
   }
 
 
-  @media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
+    .iresponsive {
+        width: 100%;
+
     .botones {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: auto auto;
-      gap: 5px;
-    }
-  
-    .digito {
-      padding: 10px 0;
-      font-size: 1rem;
-      color: black;
-    }
-  
-    .controles {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    #start, #stop, #reset {
-      padding: 10px 20px;
-      font-size: 1rem;
-      color: black;
-    }
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: auto auto;
+        gap: 5px;
+        }
+    
+        .digito {
+        padding: 10px 0;
+        font-size: 1rem;
+        color: black;
+        }
+    
+        .controles {
+        flex-direction: column;
+        gap: 10px;
+        }
+    
+        #start, #stop, #reset {
+        padding: 10px 20px;
+        font-size: 1rem;
+        color: black;
+        }
+}
 }
