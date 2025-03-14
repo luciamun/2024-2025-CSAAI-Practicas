@@ -114,84 +114,30 @@ font-weight: bold; /* Negrita */
     z-index: 10; /* Hace que el botón crezca por encima de los demás */
   }
 
-  @media screen and (max-width: 600px) {
 
+@media screen and (max-width: 600px) {
     .iresponsive {
         width: 100%;
     }
+    .botones {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5px;
+    }
 
     .digito {
-        background-color: rgb(79, 122, 208);
-        border-radius: 10%;
-        width: 8%; /* Un poco más pequeño para que quepan bien */
-        text-align: center;
-        font-size: 1.5rem;
-        padding: 15px 0;
-        cursor: pointer;
-        transition: transform 0.2s ease-in-out;
-      }
-    
-      #stop {
-    
-        margin-left: 5%;
-        margin-right: 5%;
-        background-color: rgb(181, 20, 20);
-        border-radius: 10%;
-        width: 8%; /* Un poco más pequeño para que quepan bien */
-        text-align: center;
-        font-size: 1.5rem;
-        padding: 15px 0;
-        cursor: pointer;
-        transition: transform 0.2s ease-in-out;
-    
-      }
-    #stop:hover{
-    
-        transform: scale(1.1);
-        z-index: 10; /* Hace que el botón crezca por encima de los demás */
-      }
-      #start {
-    
-        background-color: rgb(63, 180, 40);
-        border-radius: 10%;
-        width: 8%; /* Un poco más pequeño para que quepan bien */
-        text-align: center;
-        font-size: 1.5rem;
-        padding: 15px 0;
-        cursor: pointer;
-        transition: transform 0.2s ease-in-out;
-    
-      }
-    
-      #start:hover{
-        transform: scale(1.1);
-        z-index: 10; /* Hace que el botón crezca por encima de los demás */
-      }
-    
-    #reset
-      {
-        margin-top: 5%;
-        background-color: rgb(63, 180, 40);
-        border-radius: 10%;
-        width: 8%; /* Un poco más pequeño para que quepan bien */
-        text-align: center;
-        font-size: 1.5rem;
-        padding: 15px 0;
-        cursor: pointer;
-        transition: transform 0.2s ease-in-out;
-    
-      }
-    
-      #reset:hover {
-    
-        transform: scale(1.1);
-        z-index: 10; /* Hace que el botón crezca por encima de los demás */
-      }
-      .digito:hover {
-        background-color: rgb(111, 143, 208);
-        transform: scale(1.2);
-        z-index: 10; /* Hace que el botón crezca por encima de los demás */
-      }
-  
-  
-  }
+        padding: 10px 0;
+        font-size: 1rem;
+    }
+
+    .controles {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #start, #stop, #reset {
+        padding: 10px 20px;
+        font-size: 1rem;
+
+
+}
+} 
