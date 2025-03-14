@@ -40,6 +40,7 @@ font-weight: bold; /* Negrita */
     flex-wrap: wrap;
     gap: 10px; /* Espacio entre botones */
     width: 100%;
+    grid-template-rows: auto auto;
   }
   .digito {
     background-color: rgb(79, 122, 208);
@@ -126,6 +127,7 @@ font-weight: bold; /* Negrita */
     }
 
     .digito {
+        color: black;
         padding: 10px 0;
         font-size: 1rem;
     }
@@ -136,6 +138,7 @@ font-weight: bold; /* Negrita */
     }
 
     #start, #stop, #reset {
+        color: black;
         padding: 10px 20px;
         font-size: 1rem;
 
