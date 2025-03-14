@@ -117,9 +117,8 @@ font-weight: bold; /* Negrita */
 
 
 @media screen and (max-width: 600px) {
-    /*.iresponsive {
+    .iresponsive {
         width: 100%;
-    }*/
     .botones {
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: auto auto;
