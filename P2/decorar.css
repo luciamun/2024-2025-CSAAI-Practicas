@@ -41,6 +41,7 @@ font-weight: bold; /* Negrita */
     gap: 10px; /* Espacio entre botones */
     width: 100%;
     grid-template-rows: auto auto;
+    color: black;
   }
   .digito {
     background-color: rgb(79, 122, 208);
@@ -51,6 +52,7 @@ font-weight: bold; /* Negrita */
     padding: 15px 0;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+    color: black;
   }
 
   #stop {
