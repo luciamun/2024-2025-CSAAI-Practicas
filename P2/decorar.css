@@ -138,9 +138,10 @@ font-weight: bold; /* Negrita */
     }
 
     #start, #stop, #reset {
+
         color: black;
         padding: 10px 20px;
-        font-size: 1rem;
+        font-size: 1.5rem;
 
 
 }
