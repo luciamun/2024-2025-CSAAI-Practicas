@@ -35,7 +35,7 @@ font-weight: bold; /* Negrita */
     color: gray;
   }
   .botones {
-    display: grid;
+    display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 10px; /* Espacio entre botones */
