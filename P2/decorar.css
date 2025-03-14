@@ -135,16 +135,18 @@ font-weight: bold; /* Negrita */
         color: black;
         }
     
-        .controles {
+        /*.controles {
         width: 100%;
-        flex-direction: column;
+        flex-direction: row;
         gap: 10px;
-        }
+        } 
+        */
+
     
-        #start, #stop, #reset {
-        width: 100%;
-        padding: 10px 20px;
-        font-size: 1rem;
-        color: black;
-        }
+#start, #stop, #reset {
+flex-grow: 1;
+padding: 10px 20px;
+font-size: 1rem;
+color: black;
+}
 }
