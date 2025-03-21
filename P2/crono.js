@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let intentosRestantes = 10;
     let ambienteActivo = false;
 
+    // Agregar audio opcional (si quieres música en modo ambiente)
+    const musica = new Audio("ruta-de-tu-audio.mp3"); // Reemplaza con tu archivo de música
+
     // Generar clave secreta
     function generarClaveSecreta() {
         claveSecreta = Array.from({ length: 4 }, () => Math.floor(Math.random() * 10));
@@ -89,12 +92,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Cambiar fondo y color del título con "Magic"
+    // Cambiar fondo y color del título con "Magic" y manejar música
+    botonMagia.textContent = "Music"; // Por defecto, el botón dirá "Music"
+
     botonMagia.addEventListener("click", function () {
         document.body.classList.toggle("modo-ambiente");
-        titulo.style.color = !ambienteActivo ? "#333" : "white";
-        botonMagia.textContent = !ambienteActivo ? "Magic" : "Boring";
         ambienteActivo = !ambienteActivo;
+        
+        // Cambiar texto del botón
+        botonMagia.textContent = ambienteActivo ? "Boring" : "Music";
+
+        // Cambiar color del título
+        titulo.style.color = ambienteActivo ? "white" : "#333";
+
+        // Manejo de música
+        if (ambienteActivo) {
+            musica.loop = true;
+            musica.play().catch(err => console.log("Error al reproducir música:", err));
+        } else {
+            musica.pause();
+            musica.currentTime = 0;
+        }
     });
 
     // Agregar eventos a los botones

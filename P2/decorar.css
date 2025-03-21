@@ -176,10 +176,14 @@ font-weight: bold; /* Negrita */
         */
 
     
-#start, #stop, #reset {
+#start, #stop, #reset, #magia{
+width: 20%;
 flex-grow: 1;
 padding: 10px 20px;
-font-size: 1rem;
+font-size: 1.3rem;
 color: black;
+}
+#magia{
+    color: white;
 }
 }
