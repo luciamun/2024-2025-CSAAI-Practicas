@@ -4,7 +4,17 @@ body {
     text-align: center;
     background-image: url('otromas.webp');
   }
-  
+
+.clave-secreta {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacio entre los números */
+    background: rgba(255, 255, 255, 0.272); /* Fondo negro translúcido */
+    padding: 15px;
+    border-radius: 10px; /* Bordes redondeados */
+    width: fit-content;
+    margin: 10px auto;
+}
   .container {
     margin-top: 20px;
   }
