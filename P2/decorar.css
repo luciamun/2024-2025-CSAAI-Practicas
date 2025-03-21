@@ -152,7 +152,11 @@ font-weight: bold; /* Negrita */
   
 
 @media screen and (max-width: 600px) {
-
+    .body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-image: url('otromas.webp');
+      }
     .botones {
         display: grid;
         grid-template-columns: repeat(5, 1fr); /*crea 5 columnas*/
@@ -177,7 +181,7 @@ font-weight: bold; /* Negrita */
 
     
 #start, #stop, #reset, #magia{
-width: 20%;
+width: 25%;
 flex-grow: 1;
 padding: 10px 20px;
 font-size: 1.3rem;
