@@ -73,7 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("intentos").textContent = intentosRestantes;
             }
 
-            if ([...document.querySelectorAll(".numero")].every(num => num.textContent !== "*")) {
+            const numeros = document.querySelectorAll(".numero");
+            if (numeros.length > 0 && [...numeros].every(num => num.textContent !== "*")) {
                 detenerCronometro();
                 alert("¡Felicidades! Adivinaste la clave secreta.");
             }
@@ -91,10 +92,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // Cambiar fondo y color del título con "Magic"
     botonMagia.addEventListener("click", function () {
         document.body.classList.toggle("modo-ambiente");
-        titulo.style.color = ambienteActivo ? "#333" : "white";
-        botonMagia.textContent = ambienteActivo ? "Magic" : "Boring";
+        titulo.style.color = !ambienteActivo ? "#333" : "white";
+        botonMagia.textContent = !ambienteActivo ? "Magic" : "Boring";
         ambienteActivo = !ambienteActivo;
     });
 
+    // Agregar eventos a los botones
+    startBtn.addEventListener("click", iniciarCronometro);
+    stopBtn.addEventListener("click", detenerCronometro);
+    resetBtn.addEventListener("click", reiniciarCronometro);
 
+    // Agregar eventos a los botones de los números
+    botonesDigito.forEach(boton => {
+        boton.addEventListener("click", manejarDigito);
+    });
+
+    // Inicializar juego
+    generarClaveSecreta();
+    document.getElementById("intentos").textContent = intentosRestantes;
 });

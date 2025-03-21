@@ -42,9 +42,23 @@
     </div>
     <div>
         <button id="magia">Magic</button>
-        <!--<audio id=>
-            <source src= type="audio/mpeg">
-        </audio> -->
+        <audio id="misionimposible">
+            <source src="Canción misión imposible.mp3" type="audio/mpeg">
+        </audio>
+        
+        <script>
+          document.getElementById("magia").addEventListener("click", function() {
+            let audio = document.getElementById("misionimposible");
+            
+            if (audio.paused) {
+              audio.play();
+              this.textContent = "Stop Music";
+            } else {
+              audio.pause();
+              this.textContent = "Magic";
+            }
+          });
+        </script>
     </div>
   </div>
 </body>
