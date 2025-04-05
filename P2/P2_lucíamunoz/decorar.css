@@ -1,0 +1,203 @@
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url('otromas.webp');
+  }
+
+.clave-secreta {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacio entre los números */
+    background: rgba(255, 255, 255, 0.272); /* Fondo negro translúcido */
+    padding: 15px;
+    border-radius: 10px; /* Bordes redondeados */
+    width: fit-content;
+    margin: 10px auto;
+}
+  .container {
+    margin-top: 20px;
+  }
+  
+  h1 {
+    color: #333;
+    font-family: 'DS-Digital'
+  }
+
+  @font-face {
+    font-family: 'DS-Digital';
+    src: url('DS-DIGI.TTF') format('truetype');
+  }
+  #cronometro {
+    font-family: 'DS-Digital', sans-serif;
+    font-size: 2.5rem;
+    color: rgb(207, 39, 39);
+  }
+
+.teclao {
+
+font-weight: bold; /* Negrita */
+  font-style: italic; /* Cursiva */
+}
+  
+  .clave-secreta span {
+    font-size: 2rem;
+    margin: 0 10px;
+    color: gray;
+  }
+  .botones {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px; /* Espacio entre botones */
+    width: 100%;
+    grid-template-rows: auto auto;
+    color: black;
+  }
+  .digito {
+    background-color: rgb(79, 122, 208);
+    border-radius: 10%;
+    width: 8%; /* Un poco más pequeño para que quepan bien */
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    color: black;
+  }
+
+  #stop {
+
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: rgb(181, 20, 20);
+    border-radius: 10%;
+    width: 8%; /* Un poco más pequeño para que quepan bien */
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+  }
+#stop:hover{
+
+    transform: scale(1.1);
+    z-index: 10; /* Hace que el botón crezca por encima de los demás */
+  }
+  #start {
+
+    background-color: rgb(63, 180, 40);
+    border-radius: 10%;
+    width: 8%; /* Un poco más pequeño para que quepan bien */
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+  }
+
+  #start:hover{
+    transform: scale(1.1);
+    z-index: 10; /* Hace que el botón crezca por encima de los demás */
+  }
+
+#reset
+  {
+    margin-top: 5%;
+    background-color: rgb(63, 180, 40);
+    border-radius: 10%;
+    width: 8%; /* Un poco más pequeño para que quepan bien */
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+  }
+
+  #reset:hover {
+
+    transform: scale(1.1);
+    z-index: 10; /* Hace que el botón crezca por encima de los demás */
+  }
+  .digito:hover {
+    background-color: rgb(111, 143, 208);
+    transform: scale(1.2);
+    z-index: 10; /* Hace que el botón crezca por encima de los demás */
+  }
+
+#magia {
+    margin-top: 5%;
+    color: aliceblue;
+    background-color: rgb(71, 13, 219);
+    border-radius: 10%;
+    width: 8%; /* Un poco más pequeño para que quepan bien */
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+  }
+  #magia:hover {
+    
+
+    transform: scale(1.1);
+    z-index: 10; /* Hace que el botón crezca por encima de los demás */
+  }
+
+
+.modo-ambiente {
+    background: url('pruebafondoambiente.gif') no-repeat center center fixed;
+    background-size: cover;
+    transition: background 1s ease-in-out;
+    color: white; /* Ajusta el color del texto si es necesario */
+  }
+.modo-ambiente h1 {
+    color: white;
+    font-family: 'DS-Digital';
+  }
+  
+
+@media screen and (max-width: 600px) {
+    .body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-image: url('otromas.webp');
+      }
+    .botones {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); /*crea 5 columnas*/
+        grid-template-rows: auto auto;/*crea 2 filas*/
+        gap: 5px;
+
+        }
+    
+        .digito {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 1rem;
+        color: black;
+        }
+    
+        /*.controles {
+        width: 100%;
+        flex-direction: row;
+        gap: 10px;
+        } 
+        */
+
+    
+#start, #stop, #reset, #magia{
+width: 25%;
+flex-grow: 1;
+padding: 10px 20px;
+font-size: 1.3rem;
+color: black;
+}
+#magia{
+    color: white;
+}
+}

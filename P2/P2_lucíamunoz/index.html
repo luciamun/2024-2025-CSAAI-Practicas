@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego Adivina la Clave</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="decorar.css">
+
+  <script defer src="script.js"></script>
+  <script src="crono.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Juego Adivina la Clave Secreta</h1>
+    <div class="clave-secreta">
+      <span class="numero">*</span>
+      <span class="numero">*</span>
+      <span class="numero">*</span>
+      <span class="numero">*</span>
+    </div>
+    <p class="teclao">Intentos restantes: <span id="intentos">10</span></p>
+    <p class="teclao">Tiempo: <span id="cronometro">00:00</span></p>
+
+    <div class="botones">
+      <button class="digito">0</button>
+      <button class="digito">1</button>
+      <button class="digito">2</button>
+      <button class="digito">3</button>
+      <button class="digito">4</button>
+      <button class="digito">5</button>
+      <button class="digito">6</button>
+      <button class="digito">7</button>
+      <button class="digito">8</button>
+      <button class="digito">9</button>
+    </div>
+
+    <div class="controles">
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+      <button id="reset">Reset</button>
+    </div>
+    <div>
+        <button id="magia">Magic</button>
+        <audio id="misionimposible">
+            <source src="Canción misión imposible.mp3" type="audio/mpeg">
+        </audio>
+        
+        <script>
+          document.getElementById("magia").addEventListener("click", function() {
+            let audio = document.getElementById("misionimposible");
+            
+            if (audio.paused) {
+              audio.play();
+              this.textContent = "Stop Music";
+            } else {
+              audio.pause();
+              this.textContent = "Magic";
+            }
+          });
+        </script>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+body {
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  background-image: url('fondo1_p3.jpeg');
+}
+
+#gameCanvas {
+  border: 2px solid rgba(255, 255, 255, 0.282);
+  align-items: center;
+}
