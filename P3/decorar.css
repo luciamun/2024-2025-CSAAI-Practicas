@@ -4,9 +4,15 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
   justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
+  align-items: center;     /* Centra verticalmente */
   background-image: url('fondo1_p3.jpeg');
+  background-size: cover; /* Que el fondo llene toda la pantalla */
+  background-position: center;
   font-family: 'Upheaval', sans-serif;
 }
 
