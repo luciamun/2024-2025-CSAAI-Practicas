@@ -193,10 +193,21 @@ function updateExplosions() {
 }
 //******** VICTORIA/DERROTA ********//
 function showEndMessage(text) {
-    ctx.fillStyle = "white";
+    //ctx.fillStyle = "white";//
+    if (text === "DERROTA") {
+        canvas.classList.add("defeat");
+        ctx.fillStyle = "red";
+    }
+    else {
+        ctx.fillStyle = "white";
+
+    }
+
     ctx.font = "100px 'Upheaval'";
     ctx.textAlign = "center";
     ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+    
 }
 
 
