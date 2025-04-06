@@ -16,15 +16,18 @@ body {
   font-family: 'Upheaval', sans-serif;
 }
 
-#gameCanvas {
-  border: 2px solid rgba(255, 255, 255, 0.282);
-  image-rendering: pixelated; /* si usas gráficos pixelados */
-  box-shadow: 0 0 20px #0f0;  /* opcional: efecto glow alienígena */ 
-  /*cambiar a si hay derrota rojo y parpadear si hay disparo (idea opcional)*/
-  transition: box-shadow 0.3s ease; /*PRUEBA*/
-}
+
  /*crear clase defeat en js*/
 #gameCanvas.defeat {
   box-shadow: 0 0 30px red;
 }
-
+#gameCanvas.flash-border {
+  box-shadow: 0 0 60px 20px orange !important;
+}
+#gameCanvas {
+  border: 2px solid rgba(255, 255, 255, 0.282);
+  image-rendering: pixelated; /* si usas gráficos pixelados */
+  box-shadow: 0 0 20px #0f0;  /* efecto glow alienígena */ 
+  /*cambiar a si hay derrota rojo y parpadear si hay disparo (idea opcional)*/
+  transition: box-shadow 0.3s ease; /*PRUEBA*/
+}

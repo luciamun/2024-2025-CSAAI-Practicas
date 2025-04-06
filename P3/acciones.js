@@ -20,6 +20,8 @@ let gameOver = false;
 let explosions = [];
 const explosionImage = new Image();
 explosionImage.src = "explosion.gif";
+//const bulletSound = new Audio("disparo.mp3"); prueba 1, no suena cada vez que disparo
+const explosionSound = new Audio("explosion.mp3");
 // tablero medidas
 canvas.width = 800;
 canvas.height = 600;
@@ -150,7 +152,18 @@ function checkBulletHit() {
                         x: aliens[j].x,
                         y: aliens[j].y,
                         timer: 10 // duración en frames
+                        
                     });
+                    const explosion = new Audio("explosion.mp3"); //prueba2 
+                    explosion.play();
+                    canvas.classList.remove("defeat"); // NO SE VA EL VERDE, 
+                    canvas.classList.remove("default-glow"); // PRUEBA 1 QUITANDOLO
+                    canvas.classList.add("flash-border");
+
+                    setTimeout(() => {
+                        canvas.classList.remove("flash-border");
+                        canvas.classList.add("default-glow"); // restauramos el glow verde
+                    }, 200);
     
                 // El alien fue golpeado, eliminar bala y alien
                 aliens.splice(j, 1);
@@ -221,6 +234,9 @@ document.addEventListener("keydown", function (event) {
         // Agregar una nueva bala siempre que el jugador presione espacio
         bullets.push({ x: playerX + 22, y: canvas.height - 70 }) //22 porque con 25 no queda tan centrado
         //70 para que salga de 10 pixeles por encima del jugador, que esta en el 60 (+10 = 70)
+        const bullet = new Audio("disparo.mp3");
+        bullet.play();
+        
     }
     //Para mover al jugador:
     if (event.code === "ArrowLeft") {
