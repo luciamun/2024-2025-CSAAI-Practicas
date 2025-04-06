@@ -179,6 +179,8 @@ function checkBulletHit() {
 function checkGameStatus() {
     if (aliens.length === 0) {
         showEndMessage("VICTORIA");
+        const victoriaSound = new Audio('victoria.mp3')
+        victoriaSound.play()
         gameOver = true;
     }
 
