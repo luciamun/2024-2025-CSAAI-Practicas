@@ -12,7 +12,14 @@ let alienDirection = 1; // 1 = derecha, -1 = izquierda
 let bullets = []; //para las balas
 let playerX = canvas.width / 2 - 25; // Posición inicial del jugador
 const playerSpeed = 10; // Velocidad de movimiento del jugador
+const playerImage = new Image();
+playerImage.src = "navejugador.webp";
+const alienImage = new Image();
+alienImage.src = "alien1.png"
 let gameOver = false;
+let explosions = [];
+const explosionImage = new Image();
+explosionImage.src = "explosion.gif";
 // tablero medidas
 canvas.width = 800;
 canvas.height = 600;
@@ -26,13 +33,13 @@ function drawBackground() {
 // Dibujar jugador
 function drawPlayer(x, y) {
     ctx.fillStyle = "blue";
-    ctx.fillRect(x, y, 50, 30);
+    ctx.drawImage(playerImage,x, y, 50, 50);
 }
 
 // Dibujar alienígenas
 function drawAlien(x, y) {
     ctx.fillStyle = "green";
-    ctx.fillRect(x, y, 40, 30);
+    ctx.drawImage(alienImage, x, y, 40, 30);
 }
 
 // Dibujar una bala
@@ -56,6 +63,7 @@ function draw() {
     drawPlayer(playerX, canvas.height - 60);
     updateBullets(); // Mueve y dibuja las balas 
     updateAliens(); //aquí dibujamos y movemos los aliens
+    updateExplosions(); //explosioness
     checkBulletHit(); // Revisa si alguna bala ha golpeado a un alien 
     checkGameStatus(); //GANAR O PERDER
     requestAnimationFrame(draw); // esto hace que draw() se repita una y otra vez
@@ -136,6 +144,14 @@ function checkBulletHit() {
                 bullets[i].y < aliens[j].y + 30 &&
                 bullets[i].y + 10 > aliens[j].y
             ) {
+                {
+                    // Añade la explosión en la posición del alien
+                    explosions.push({
+                        x: aliens[j].x,
+                        y: aliens[j].y,
+                        timer: 10 // duración en frames
+                    });
+    
                 // El alien fue golpeado, eliminar bala y alien
                 aliens.splice(j, 1);
                 bullets.splice(i, 1);
@@ -144,6 +160,7 @@ function checkBulletHit() {
             }
         }
     }
+}
 }
 
 function checkGameStatus() {
@@ -161,10 +178,23 @@ function checkGameStatus() {
     }
 }
 
+function updateExplosions() {
+    for (let i = 0; i < explosions.length; i++) {
+        let exp = explosions[i];
+        ctx.drawImage(explosionImage, exp.x, exp.y, 50, 50);
+        exp.timer--;
+
+        // Elimina cuando se acabe el tiempo
+        if (exp.timer <= 0) {
+            explosions.splice(i, 1);
+            i--;
+        }
+    }
+}
 //******** VICTORIA/DERROTA ********//
 function showEndMessage(text) {
     ctx.fillStyle = "white";
-    ctx.font = "50px Arial";
+    ctx.font = "100px 'Upheaval'";
     ctx.textAlign = "center";
     ctx.fillText(text, canvas.width / 2, canvas.height / 2);
 }

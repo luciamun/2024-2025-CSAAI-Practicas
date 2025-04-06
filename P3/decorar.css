@@ -1,10 +1,19 @@
+@font-face {
+  font-family: 'Upheaval';
+  src: url('upheavtt.ttf') format('truetype');
+}
+
 body {
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   background-image: url('fondo1_p3.jpeg');
+  font-family: 'Upheaval', sans-serif;
 }
 
 #gameCanvas {
   border: 2px solid rgba(255, 255, 255, 0.282);
-  align-items: center;
+  image-rendering: pixelated; /* si usas gráficos pixelados */
+  box-shadow: 0 0 20px #0f0;  /* opcional: efecto glow alienígena */ 
+  /*cambiar a si hay derrota rojo y parpadear si hay disparo (idea opcional)*/
 }
+
