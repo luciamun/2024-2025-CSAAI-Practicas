@@ -9,9 +9,10 @@ const ctx = canvas.getContext("2d"); // ctx es coo el pincel, estamos dibujando 
 let aliens = [];
 let alienSpeed = 2;
 let alienDirection = 1; // 1 = derecha, -1 = izquierda
-
 let bullets = []; //para las balas
-
+let playerX = canvas.width / 2 - 25; // Posición inicial del jugador
+const playerSpeed = 5; // Velocidad de movimiento del jugador
+let gameOver = false;
 // tablero medidas
 canvas.width = 800;
 canvas.height = 600;
@@ -49,11 +50,14 @@ function drawBullet(x, y) {
   //  drawBullet(120, 90);
 //}
 function draw() {
+    if (gameOver) return;
+
     drawBackground();
-    drawPlayer(canvas.width / 2 - 25, canvas.height - 60);
-    updateBullets(); // Mueve y dibuja las balas //********//
-    updateAliens(); // 👈 aquí dibujamos y movemos los aliens
-    checkBulletHit(); // Revisa si alguna bala ha golpeado a un alien //********//
+    drawPlayer(playerX, canvas.height - 60);
+    updateBullets(); // Mueve y dibuja las balas 
+    updateAliens(); //aquí dibujamos y movemos los aliens
+    checkBulletHit(); // Revisa si alguna bala ha golpeado a un alien 
+    checkGameStatus(); //GANAR O PERDER
     requestAnimationFrame(draw); // esto hace que draw() se repita una y otra vez
 }
 
@@ -142,16 +146,61 @@ function checkBulletHit() {
     }
 }
 
+function checkGameStatus() {
+    if (aliens.length === 0) {
+        showEndMessage("VICTORIA");
+        gameOver = true;
+    }
 
-// Llamar a la función de dibujo
-draw();
+    for (let alien of aliens) {
+        if (alien.y + 70 >= canvas.height) { // 70 = altura del alien
+            showEndMessage("DERROTA");
+            gameOver = true;
+            break;
+        }
+    }
+}
+
+//******** VICTORIA/DERROTA ********//
+function showEndMessage(text) {
+    ctx.fillStyle = "white";
+    ctx.font = "50px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+}
+
+
 initAliens();
+draw();
+
 
 // Evento para disparar al presionar espacio
 document.addEventListener("keydown", function (event) {
     if (event.code === "Space") {
         // Agregar una nueva bala siempre que el jugador presione espacio
-        bullets.push({ x: canvas.width / 2 - 2, y: canvas.height - 70 });
+        bullets.push({ x: playerX + 22, y: canvas.height - 70 }) //22 porque con 25 no queda tan centrado
+        //70 para que salga de 10 pixeles por encima del jugador, que esta en el 60 (+10 = 70)
     }
+    //Para mover al jugador:
+    if (event.code === "ArrowLeft") {
+        playerX -= playerSpeed; 
+    }
+
+    if (event.code === "ArrowRight") {
+        playerX += playerSpeed; 
+    }
+
+    //Para que el jugador no salga de la pantalla:
+
+    if (playerX < 0) {
+         playerX= 0
+    }
+
+    if (playerX + 50 > canvas.width) { //el rectangulo de prueba mide 50, hay que tenerlo en cuenta
+        playerX= canvas.width-50
+   }
+
 });
+
+
 
