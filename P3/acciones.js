@@ -11,7 +11,7 @@ let alienSpeed = 2;
 let alienDirection = 1; // 1 = derecha, -1 = izquierda
 let bullets = []; //para las balas
 let playerX = canvas.width / 2 - 25; // Posición inicial del jugador
-const playerSpeed = 5; // Velocidad de movimiento del jugador
+const playerSpeed = 10; // Velocidad de movimiento del jugador
 let gameOver = false;
 // tablero medidas
 canvas.width = 800;
@@ -153,7 +153,7 @@ function checkGameStatus() {
     }
 
     for (let alien of aliens) {
-        if (alien.y + 70 >= canvas.height) { // 70 = altura del alien
+        if (alien.y + 100 >= canvas.height) { // 100 = altura del alien
             showEndMessage("DERROTA");
             gameOver = true;
             break;
