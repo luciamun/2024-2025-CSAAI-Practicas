@@ -31,3 +31,4 @@ body {
   /*cambiar a si hay derrota rojo y parpadear si hay disparo (idea opcional)*/
   transition: box-shadow 0.3s ease; /*PRUEBA*/
 }
+

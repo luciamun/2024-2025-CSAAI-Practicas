@@ -187,6 +187,8 @@ function checkGameStatus() {
     for (let alien of aliens) {
         if (alien.y + 100 >= canvas.height) { // 100 = altura del alien
             showEndMessage("DERROTA");
+            //const derrotaSound = new Audio('derrota')
+            //derrotaSound.play()
             gameOver = true;
             break;
         }
