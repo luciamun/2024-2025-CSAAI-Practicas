@@ -34,7 +34,7 @@ function drawBackground() {
 
 // Dibujar jugador
 function drawPlayer(x, y) {
-    ctx.fillStyle = "blue";
+    //ctx.fillStyle = "blue";
     ctx.drawImage(playerImage,x, y, 50, 50);
 }
 

@@ -160,6 +160,11 @@ font-weight: bold; /* Negrita */
     font-family: 'DS-Digital';
   }
   
+.botones_movil {
+
+display: none;
+
+}
 
 @media screen and (max-width: 600px) {
     .body {
