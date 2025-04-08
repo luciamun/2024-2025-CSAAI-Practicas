@@ -32,3 +32,14 @@ body {
   transition: box-shadow 0.3s ease; /*PRUEBA*/
 }
 
+@media screen and (max-width: 600px) {
+
+  #gameCanvas {
+    margin-bottom: 10px;
+     width: 200px;
+     height: 200px;
+
+  }
+
+ }
+
