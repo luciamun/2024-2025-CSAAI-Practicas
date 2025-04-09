@@ -235,33 +235,64 @@ draw();
 // Evento para disparar al presionar espacio
 document.addEventListener("keydown", function (event) {
     if (event.code === "Space") {
-        // Agregar una nueva bala siempre que el jugador presione espacio
-        bullets.push({ x: playerX + 22, y: canvas.height - 70 }) //22 porque con 25 no queda tan centrado
-        //70 para que salga de 10 pixeles por encima del jugador, que esta en el 60 (+10 = 70)
-        const bullet = new Audio("disparo.mp3");
-        bullet.play();
-        
+        Disparar();
     }
     //Para mover al jugador:
     if (event.code === "ArrowLeft") {
-        playerX -= playerSpeed; 
+        //playerX -= playerSpeed; 
+        moverIzquierda();
     }
 
     if (event.code === "ArrowRight") {
-        playerX += playerSpeed; 
+        //playerX += playerSpeed; 
+        moverDerecha();
     }
 
     //Para que el jugador no salga de la pantalla:
 
-    if (playerX < 0) {
-         playerX= 0
-    }
+    //if (playerX < 0) {
+      //   playerX= 0
+    //}
 
+    
+
+    
+});
+document.getElementById("botonizquierda").addEventListener("click", function () {
+    moverIzquierda();})
+
+document.getElementById("botonderecha").addEventListener("click", function () {
+    moverDerecha();})
+
+document.getElementById("piupiu").addEventListener("click", function () {
+    Disparar();})
+
+
+
+
+function Disparar(){
+    // Agregar una nueva bala siempre que el jugador presione espacio
+    bullets.push({ x: playerX + 22, y: canvas.height - 70 }) //22 porque con 25 no queda tan centrado
+    //70 para que salga de 10 pixeles por encima del jugador, que esta en el 60 (+10 = 70)
+    const bullet = new Audio("disparo.mp3");
+    bullet.play();
+    
+}
+
+function moverIzquierda() {
+    playerX -= playerSpeed;
+    
+    // Limitar para que no salga de la pantalla
+    if (playerX < 0) {
+        playerX = 0;
+    }
+}
+
+function moverDerecha() {
+    playerX += playerSpeed; 
+
+    // Limitar para que no salga de la pantalla
     if (playerX + 50 > canvas.width) { //el rectangulo de prueba mide 50, hay que tenerlo en cuenta
         playerX= canvas.width-50
    }
-
-});
-
-
-
+}

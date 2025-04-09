@@ -66,6 +66,11 @@ body {
     border-radius: 10px;
     font-family: 'Upheaval', sans-serif;
   }
+  .botones_movil :hover{
+    
+    transform: scale(1.1);
+
+  }
 }
 
 
