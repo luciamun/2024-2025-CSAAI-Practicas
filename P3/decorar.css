@@ -65,6 +65,7 @@ body {
     border: 2px solid white;
     border-radius: 10px;
     font-family: 'Upheaval', sans-serif;
+    touch-action: manipulation;
   }
   .botones_movil :hover{
 
