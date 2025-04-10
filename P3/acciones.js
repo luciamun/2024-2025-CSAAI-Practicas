@@ -189,7 +189,7 @@ function drawScore() {
 
 function checkGameStatus() {
     if (aliens.length === 0) {
-        showEndMessage("VICTORIA");
+        showEndMessage("VICTORY");
         const victoriaSound = new Audio('victoria.mp3')
         victoriaSound.play()
         gameOver = true;
@@ -197,7 +197,7 @@ function checkGameStatus() {
 
     for (let alien of aliens) {
         if (alien.y + 100 >= canvas.height) { // 100 = altura del alien
-            showEndMessage("DERROTA");
+            showEndMessage("GAME OVER");
             const derrotaSound = new Audio('derrota.mp3')
             derrotaSound.play()
             gameOver = true;
@@ -222,7 +222,7 @@ function updateExplosions() {
 //******** VICTORIA/DERROTA ********//
 function showEndMessage(text) {
     //ctx.fillStyle = "white";//
-    if (text === "DERROTA") {
+    if (text === "GAME OVER") {
         canvas.classList.add("defeat");
         ctx.fillStyle = "red";
     }
