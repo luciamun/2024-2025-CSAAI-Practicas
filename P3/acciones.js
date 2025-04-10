@@ -22,6 +22,8 @@ const explosionImage = new Image();
 explosionImage.src = "explosion.gif";
 //const bulletSound = new Audio("disparo.mp3"); prueba 1, no suena cada vez que disparo
 const explosionSound = new Audio("explosion.mp3");
+//PUNTOS
+let score = 0;
 // tablero medidas
 canvas.width = 800;
 canvas.height = 600;
@@ -68,6 +70,7 @@ function draw() {
     updateExplosions(); //explosioness
     checkBulletHit(); // Revisa si alguna bala ha golpeado a un alien 
     checkGameStatus(); //GANAR O PERDER
+    drawScore(); //LOS PUNTOS
     requestAnimationFrame(draw); // esto hace que draw() se repita una y otra vez
 }
 
@@ -166,6 +169,7 @@ function checkBulletHit() {
                     }, 200);
     
                 // El alien fue golpeado, eliminar bala y alien
+                score += 10;
                 aliens.splice(j, 1);
                 bullets.splice(i, 1);
                 i--; // Ajustar el índice para que no se salte ningún elemento
@@ -174,6 +178,13 @@ function checkBulletHit() {
         }
     }
 }
+}
+
+function drawScore() {
+    ctx.fillStyle = "white";
+    ctx.font = "20px 'Upheaval'"; 
+    ctx.textAlign = "left";
+    ctx.fillText("Puntos: " + score, 10, 30); // Esquina superior izquierda
 }
 
 function checkGameStatus() {
@@ -187,8 +198,8 @@ function checkGameStatus() {
     for (let alien of aliens) {
         if (alien.y + 100 >= canvas.height) { // 100 = altura del alien
             showEndMessage("DERROTA");
-            //const derrotaSound = new Audio('derrota')
-            //derrotaSound.play()
+            const derrotaSound = new Audio('derrota.mp3')
+            derrotaSound.play()
             gameOver = true;
             break;
         }
