@@ -6,31 +6,32 @@
     <link rel="stylesheet" href="decorar.css">
 </head>
 <body>
-    <div class="game">
-        <div class="controls">
-            <button id="startBtn">Comenzar</button>
-            <div class="size-wrapper">
-                <button id="sizeBtn">Tamaño</button>
-                <div id="sizeSelect" class="dropdown hidden">
-                    <div class="option" data-size="2">2 x 2</div>
-                    <div class="option" data-size="4">4 x 4</div>
-                    <div class="option" data-size="6">6 x 6</div>
+    <div class="container-blanco">
+        <div class="game">
+            <div class="controls">
+                <button id="start-button">Comenzar</button>
+                <button id="reset-button">Reiniciar</button>
+                <div style="position: relative;">
+                    <button id="size-button">Tamaño</button>
+                    <div class="dropdown-options hidden">
+                        <div class="option" data-size="2">2x2</div>
+                        <div class="option" data-size="4">4x4</div>
+                        <div class="option" data-size="6">6x6</div>
+                    </div>
                 </div>
+                <div class="display movimientos">0 movimientos</div>
+                <div id="cronometro" class="display timer">tiempo: 0   </div>
             </div>
-            <button id="resetBtn">Reiniciar</button>
-            <div class="display movimientos">0 movimientos</div>
-            <div id='cronometro' class="display timer">tiempo: 0</div>
-        </div>
-        
-        
-        
-        
-        <div class="grid-container">
-            <div class="tablero" grid-dimension="4"></div>
-            <div class="win"></div>
+            <div class="grid-container">
+                <div class="tablero" grid-dimension="4"></div>
+                <div class="win"></div>
+            </div>
         </div>
     </div>
-
     <script src="acciones.js"></script>
 </body>
+
+
+  
+
 </html>

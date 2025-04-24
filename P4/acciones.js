@@ -1,12 +1,12 @@
 const selectors = {
     gridContainer: document.querySelector('.grid-container'),
-    tablero: document.querySelector('.tablero'),
     movimientos: document.querySelector('.movimientos'),
     timer: document.querySelector('.timer'),
-    comenzar: document.querySelector('#startBtn'),
-    resetBtn: document.querySelector('#resetBtn'),
-    sizeBtn: document.querySelector('#sizeBtn'),
-    sizeSelect: document.querySelector('#sizeSelect'),
+    comenzar: document.getElementById('start-button'),
+    reiniciar: document.getElementById('reset-button'),
+    sizeButton: document.getElementById('size-button'),
+    sizeOptions: document.querySelector('.dropdown-options'),
+    tablero: document.querySelector('.tablero'),
     win: document.querySelector('.win')
 }
 
@@ -16,24 +16,31 @@ const state = {
     totalFlips: 0,
     totalTime: 0,
     loop: null,
-    lockBoard: false
+    lockBoard: false,
+    dimension: 4
 }
 
 const generateGame = () => {
-    const dimensions = parseInt(selectors.tablero.getAttribute('grid-dimension'))
+    selectors.win.innerHTML = ""
+    selectors.gridContainer.classList.remove('flipped')
+    state.flippedCards = []
+    state.totalFlips = 0
+    state.totalTime = 0
+    state.lockBoard = false
 
-    if (dimensions % 2 !== 0) {
-        throw new Error("Las dimensiones del tablero deben ser un número par.")
-    }
+    selectors.movimientos.innerText = `0 movimientos`
+    selectors.timer.innerText = `tiempo: 0   `
+
+    if (state.loop) clearInterval(state.loop)
 
     const img = ['album.jpeg', 'alphaville.jpeg', 'direstraits.jpeg', 'recy.jpeg', 
         'scorpions.jpeg', 'gun.jpeg', 'walls.jpeg', 'lhaine.jpg', 'malaika.jpg', 
-        'rels.jpg', 'choco.jpg', 'dela.jpg']
-    const picks = pickRandom(img, (dimensions * dimensions) / 2)
+        'rels.jpg', 'choco.jpg', 'dela.jpg', 'ultimo.jpeg']
+    const picks = pickRandom(img, (state.dimension * state.dimension) / 2)
     const items = shuffle([...picks, ...picks])
 
     const cards = `
-        <div class="tablero" style="grid-template-columns: repeat(${dimensions}, auto)" grid-dimension="${dimensions}">
+        <div class="tablero" style="grid-template-columns: repeat(${state.dimension}, auto)" grid-dimension="${state.dimension}">
             ${items.map(item => `
                 <div class="card" data-back="${item}">
                     <div class="card-front"></div>
@@ -44,8 +51,11 @@ const generateGame = () => {
     `
 
     const parser = new DOMParser().parseFromString(cards, 'text/html')
-    selectors.tablero.replaceWith(parser.querySelector('.tablero'))
-    selectors.tablero = document.querySelector('.tablero')
+    const newTablero = parser.querySelector('.tablero')
+    selectors.tablero.replaceWith(newTablero)
+    selectors.tablero = newTablero
+
+    attachEventListeners()
 }
 
 const pickRandom = (array, items) => {
@@ -71,38 +81,39 @@ const shuffle = array => {
 }
 
 const attachEventListeners = () => {
-    document.addEventListener('click', event => {
-        const card = event.target.closest('.card')
-        const id = event.target.id
-
-        if (id === 'startBtn' && !selectors.comenzar.classList.contains('disabled')) {
-            startGame()
-        }
-
-        if (id === 'resetBtn') {
-            resetGame()
-        }
-
-        if (id === 'sizeBtn') {
-            selectors.sizeSelect.classList.toggle('hidden')
-        }
-
-        if (event.target.classList.contains('option')) {
-            const newSize = event.target.getAttribute('data-size')
-            selectors.tablero.setAttribute('grid-dimension', newSize)
-            selectors.sizeSelect.classList.add('hidden')
-            resetGame()
-        }
-
-        if (!card || state.lockBoard || card.classList.contains('flipped') || card.classList.contains('matched')) return
-
-        flipCard(card)
+    selectors.tablero.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', () => {
+            if (state.lockBoard || card.classList.contains('flipped') || card.classList.contains('matched')) return
+            flipCard(card)
+        })
     })
 }
 
-const startGame = () => {
-    state.gameStarted = true
+selectors.comenzar.addEventListener('click', () => {
+    startGame()
     selectors.comenzar.classList.add('disabled')
+})
+
+selectors.reiniciar.addEventListener('click', () => {
+    location.reload()
+})
+
+selectors.sizeButton.addEventListener('click', () => {
+    selectors.sizeOptions.classList.toggle('hidden')
+})
+
+selectors.sizeOptions.querySelectorAll('.option').forEach(option => {
+    option.addEventListener('click', (e) => {
+        const size = parseInt(e.target.dataset.size)
+        state.dimension = size
+        generateGame()
+        selectors.sizeOptions.classList.add('hidden')
+    })
+})
+
+const startGame = () => {
+    if (state.gameStarted) return
+    state.gameStarted = true
 
     state.loop = setInterval(() => {
         state.totalTime++
@@ -121,7 +132,6 @@ const flipCard = card => {
     if (state.flippedCards.length === 2) {
         const [first, second] = state.flippedCards
         const isMatch = first.getAttribute('data-back') === second.getAttribute('data-back')
-
         state.lockBoard = true
 
         if (isMatch) {
@@ -157,20 +167,4 @@ const resetFlippedCards = () => {
     state.lockBoard = false
 }
 
-const resetGame = () => {
-    clearInterval(state.loop)
-    state.gameStarted = false
-    state.flippedCards = []
-    state.totalFlips = 0
-    state.totalTime = 0
-    state.lockBoard = false
-    selectors.comenzar.classList.remove('disabled')
-    selectors.movimientos.innerText = '0 movimientos'
-    selectors.timer.innerText = 'tiempo: 0'
-    selectors.gridContainer.classList.remove('flipped')
-    selectors.win.innerHTML = ''
-    generateGame()
-}
-
 generateGame()
-attachEventListeners()
