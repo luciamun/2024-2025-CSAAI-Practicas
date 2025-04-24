@@ -9,10 +9,11 @@ const selectors = {
 
 const state = {
     gameStarted: false,
-    flippedCards: 0,
+    flippedCards: [],
     totalFlips: 0,
     totalTime: 0,
-    loop: null
+    loop: null,
+    lockBoard: false
 }
 
 const generateGame = () => {
@@ -23,17 +24,15 @@ const generateGame = () => {
     }
 
     const img = ['album.jpeg', 'alphaville.jpeg', 'direstraits.jpeg', 'recy.jpeg', 'scorpions.jpeg', 'gun.jpeg', 'walls.jpeg']
-    
     const picks = pickRandom(img, (dimensions * dimensions) / 2)
-
     const items = shuffle([...picks, ...picks])
-    
+
     const cards = `
         <div class="tablero" style="grid-template-columns: repeat(${dimensions}, auto)" grid-dimension="${dimensions}">
             ${items.map(item => `
-                <div class="card" item-back="${item}">
+                <div class="card" data-back="${item}">
                     <div class="card-front"></div>
-                    <div class="card-back"><img src="${item}" alt="Logo URJC"></div>
+                    <div class="card-back"><img src="${item}" alt="imagen"></div>
                 </div>
             `).join('')}
         </div>
@@ -45,9 +44,9 @@ const generateGame = () => {
 
 const pickRandom = (array, items) => {
     const clonedArray = [...array]
-    const randomPicks = [] 
+    const randomPicks = []
 
-    for (let index = 0; index < items; index++) {
+    for (let i = 0; i < items; i++) {
         const randomIndex = Math.floor(Math.random() * clonedArray.length)
         randomPicks.push(clonedArray[randomIndex])
         clonedArray.splice(randomIndex, 1)
@@ -58,31 +57,27 @@ const pickRandom = (array, items) => {
 
 const shuffle = array => {
     const clonedArray = [...array]
-    for (let index = clonedArray.length - 1; index > 0; index--) {
-        const randomIndex = Math.floor(Math.random() * (index + 1))
-        const original = clonedArray[index]
-        clonedArray[index] = clonedArray[randomIndex]
-        clonedArray[randomIndex] = original
+    for (let i = clonedArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[clonedArray[i], clonedArray[j]] = [clonedArray[j], clonedArray[i]]
     }
-
     return clonedArray
 }
 
 const attachEventListeners = () => {
     document.addEventListener('click', event => {
-        const eventTarget = event.target
-        const eventParent = eventTarget.parentElement
+        const card = event.target.closest('.card')
+        const isButton = event.target.nodeName === 'BUTTON'
 
-        if (eventTarget.className.includes('card') && !eventParent.className.includes('flipped')) {
-            flipCard(eventParent)
-        } else if (eventTarget.nodeName === 'BUTTON' && !eventTarget.className.includes('disabled')) {
+        if (isButton && !event.target.classList.contains('disabled')) {
             startGame()
         }
+
+        if (!card || state.lockBoard || card.classList.contains('flipped') || card.classList.contains('matched')) return
+
+        flipCard(card)
     })
 }
-
-generateGame()
-attachEventListeners()
 
 const startGame = () => {
     state.gameStarted = true
@@ -96,31 +91,32 @@ const startGame = () => {
 }
 
 const flipCard = card => {
-    state.flippedCards++
+    if (!state.gameStarted) startGame()
+
+    card.classList.add('flipped')
+    state.flippedCards.push(card)
     state.totalFlips++
 
-    if (!state.gameStarted) {
-        startGame()
-    }
+    if (state.flippedCards.length === 2) {
+        const [first, second] = state.flippedCards
+        const isMatch = first.getAttribute('data-back') === second.getAttribute('data-back')
 
-    if (state.flippedCards <= 2) {
-        card.classList.add('flipped')
-    }
+        state.lockBoard = true
 
-    if (state.flippedCards === 2) {
-        const flippedCards = document.querySelectorAll('.flipped:not(.matched)')
-
-        if (flippedCards[0].innerText === flippedCards[1].innerText) {
-            flippedCards[0].classList.add('matched')
-            flippedCards[1].classList.add('matched')
+        if (isMatch) {
+            first.classList.add('matched')
+            second.classList.add('matched')
+            resetFlippedCards()
+        } else {
+            setTimeout(() => {
+                first.classList.remove('flipped')
+                second.classList.remove('flipped')
+                resetFlippedCards()
+            }, 1000)
         }
-
-        setTimeout(() => {
-            flipBackCards()
-        }, 1000)
     }
 
-    if (!document.querySelectorAll('.card:not(.flipped)').length) {
+    if (document.querySelectorAll('.card.matched').length === document.querySelectorAll('.card').length) {
         setTimeout(() => {
             selectors.gridContainer.classList.add('flipped')
             selectors.win.innerHTML = `
@@ -135,9 +131,10 @@ const flipCard = card => {
     }
 }
 
-const flipBackCards = () => {
-    document.querySelectorAll('.card:not(.matched)').forEach(card => {
-        card.classList.remove('flipped')
-    })
-    state.flippedCards = 0
+const resetFlippedCards = () => {
+    state.flippedCards = []
+    state.lockBoard = false
 }
+
+generateGame()
+attachEventListeners()

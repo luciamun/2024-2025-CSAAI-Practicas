@@ -1,44 +1,4 @@
-button {
-    cursor: pointer;
-}
-
-.disabled {
-    color: #757575;
-}
-.card {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    cursor: pointer;
-}
-
-.card-front,
-.card-back {
-    position: absolute;
-    border-radius: 5px;
-    width: 100%;
-    height: 100%;
-    background: #282A3A;
-    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
-    backface-visibility: hidden;
-}
-
-.card-back {
-    font-size: 28pt;
-    text-align: center;
-    line-height: 100px;
-    background: #FDF8E6;
-    transform: rotateY(180deg) rotateZ(50deg);
-    user-select: none;
-}
-
-.card.flipped .card-front {
-    transform: rotateY(180deg) rotateZ(50deg);
-}
-
-.card.flipped .card-back {
-    transform: rotateY(0) rotateZ(0);
-}@font-face {
+@font-face {
     font-family: Montserrat;
     src: url(./Montserrat-Regular.ttf);
 }
@@ -46,7 +6,6 @@ button {
 html {
     width: 100%;
     height: 100%;
-    /* background: linear-gradient(325deg,  #6f00fc 0%,#fc7900 50%,#fcc700 100%); */
     font-family: Montserrat;
 }
 
@@ -74,7 +33,7 @@ button {
     font-size: 18pt;
 }
 
-.disabled {
+button.disabled {
     color: #757575;
 }
 
@@ -91,7 +50,6 @@ button {
 .win {
     border-radius: 5px;
     box-shadow: 0 25px 50px rgb(33 33 33 / 25%);
-    /* background: linear-gradient(135deg,  #6f00fc 0%,#fc7900 50%,#fcc700 100%); */
     transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
     backface-visibility: hidden;
 }
@@ -101,14 +59,7 @@ button {
     display: grid;
     grid-template-columns: repeat(4, auto);
     grid-gap: 20px;
-}
-
-.grid-container.flipped .tablero {
-    transform: rotateY(180deg) rotateZ(50deg);
-}
-
-.grid-container.flipped .win {
-    transform: rotateY(0) rotateZ(0);
+    perspective: 1000px; /* Necesario para el efecto de rotación */
 }
 
 .card {
@@ -116,34 +67,41 @@ button {
     width: 100px;
     height: 100px;
     cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
 }
 
 .card-front,
 .card-back {
     position: absolute;
-    border-radius: 5px;
     width: 100%;
     height: 100%;
-    background: #282A3A;
-    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    border-radius: 5px;
     backface-visibility: hidden;
 }
 
+/* Frente de la carta (lado oculto) */
+.card-front {
+    background: #282A3A;
+}
+
+/* Reverso de la carta (imagen o contenido visible) */
 .card-back {
-    font-size: 28pt;
-    text-align: center;
-    line-height: 100px;
     background: #FDF8E6;
-    transform: rotateY(180deg) rotateZ(50deg);
-    user-select: none;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.card.flipped .card-front {
-    transform: rotateY(180deg) rotateZ(50deg);
-}
-
-.card.flipped .card-back {
-    transform: rotateY(0) rotateZ(0);
+.card-back img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
 }
 
 .win {
@@ -154,7 +112,7 @@ button {
     height: 100%;
     text-align: center;
     background: #FDF8E6;
-    transform: rotateY(180deg) rotateZ(50deg);
+    transform: rotateY(180deg);
 }
 
 .win-text {
