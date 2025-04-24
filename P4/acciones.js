@@ -35,7 +35,8 @@ const generateGame = () => {
 
     const img = ['album.jpeg', 'alphaville.jpeg', 'direstraits.jpeg', 'recy.jpeg', 
         'scorpions.jpeg', 'gun.jpeg', 'walls.jpeg', 'lhaine.jpg', 'malaika.jpg', 
-        'rels.jpg', 'choco.jpg', 'dela.jpg', 'ultimo.jpeg']
+        'rels.jpg', 'choco.jpg', 'dela.jpg', 'ultimo.jpeg', 'capri.jpg',
+        'dela 2.jpg', 'cruz.jpg', 'oasis.jpg', 'turtles.jpg']
     const picks = pickRandom(img, (state.dimension * state.dimension) / 2)
     const items = shuffle([...picks, ...picks])
 
