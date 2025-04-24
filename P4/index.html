@@ -20,21 +20,21 @@
                         <div class="option" data-size="6">6x6</div>
                     </div>
                 </div>
-                <div id= "mov" class="display movimientos">0 movimientos</div>
-                <div id="cronometro" class="display timer">tiempo: 0   </div>
+                <div id="mov" class="display movimientos">0 movimientos</div>
+                <div id="cronometro" class="display timer">tiempo: 0</div>
             </div>
             <div class="grid-container">
-                <div class="tablero" grid-dimension="4"></div>
-            </div>
-            <div class="win">
-                <div class="win-text">¡Has ganado!</div>
+                <div class="tablero" style="grid-template-columns: repeat(4, auto)" grid-dimension="4"></div>
+                <div class="win hidden">
+                    <div class="win-content">
+                        <h1>¡VICTORIA!</h1>
+                        <h2>ELIGE UN ÁLBUM</h2>
+                        <div class="albums-grid"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <script src="acciones.js"></script>
 </body>
-
-
-  
-
 </html>

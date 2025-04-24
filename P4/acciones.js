@@ -57,9 +57,12 @@ const generateGame = () => {
     const parser = new DOMParser().parseFromString(cards, 'text/html');
     const newTablero = parser.querySelector('.tablero');
     selectors.tablero.replaceWith(newTablero);
-    selectors.tablero = newTablero;
+    selectors.tablero = document.querySelector('.tablero'); // Asegura que sea el nuevo del DOM
+
+    selectors.win = document.querySelector('.win');
     selectors.gridContainer = document.querySelector('.grid-container');
     selectors.win = document.querySelector('.win');
+
 
     attachEventListeners();
 }
@@ -105,8 +108,9 @@ selectors.reiniciar.addEventListener('click', () => {
 });
 
 selectors.sizeButton.addEventListener('click', () => {
-    selectors.sizeOptions.classList.toggle('hidden');
+    selectors.sizeOptions.classList.toggle('show');
 });
+
 
 selectors.sizeOptions.querySelectorAll('.option').forEach(option => {
     option.addEventListener('click', (e) => {
@@ -160,54 +164,67 @@ const resetFlippedCards = () => {
     state.lockBoard = false;
 }
 
+
+const victory = () => {
+    console.log("Mostrando pantalla de victoria"); // Para depuración
+    
+    // Detener el temporizador
+    clearInterval(state.loop);
+    
+    // Obtener álbumes únicos
+    const cards = document.querySelectorAll('.card');
+    const uniqueAlbums = [...new Set(Array.from(cards).map(card => card.getAttribute('data-back')))];
+    
+    // Generar HTML para los álbumes
+    const albumsHTML = uniqueAlbums.map(album => `
+        <div class="album" data-audio="${album.split('.')[0]}">
+            <img src="${album}" alt="Álbum">
+            <p>${album.split('.')[0]}</p>
+        </div>
+    `).join('');
+    
+    // Mostrar pantalla de victoria
+    const winContent = document.querySelector('.win-content');
+    winContent.querySelector('.albums-grid').innerHTML = albumsHTML;
+    
+    // Mostrar contenedor de victoria
+    document.querySelector('.win').style.display = 'flex';
+    selectors.tablero.style.display = 'none';  // esto oculta completamente las cartas
+
+    
+    // Girar el tablero
+    document.querySelector('.grid-container').classList.add('flipped');
+    
+    // Agregar eventos a los álbumes
+    document.querySelectorAll('.album').forEach(album => {
+        album.addEventListener('click', () => {
+            const audioFile = album.getAttribute('data-audio');
+            const audio = new Audio(`audios/${audioFile}.mp3`);
+            audio.play().catch(e => console.error("Error al reproducir audio:", e));
+        });
+    });
+
+    clearInterval(state.loop);
+}
 const checkVictory = () => {
     const matched = document.querySelectorAll('.card.matched').length;
     const total = document.querySelectorAll('.card').length;
+    console.log(`Cartas emparejadas: ${matched}/${total}`); // ← Para depurar
     
     if (matched === total) {
+        console.log("¡Victoria detectada!"); // ← Confirmar que entra aquí
         clearInterval(state.loop);
         victory();
     }
 }
 
+function mostrarVictoria() {
+    document.querySelector('.victoria').classList.remove('hidden');
 
-const victory = () => {
-    // Voltear el tablero
-    selectors.gridContainer.classList.add('flipped');
-    
-    // Mostrar mensaje de victoria
-    selectors.win.style.display = 'flex';
-    
-    // Obtener imágenes únicas de los álbumes
-    const cards = Array.from(document.querySelectorAll('.card'));
-    const uniqueImages = [...new Set(cards.map(card => card.getAttribute('data-back')))];
-    
-    // Crear cuadrícula de álbumes
-    const albumsHTML = uniqueImages.map(img => `
-        <div class="album" data-audio="${img.split('.')[0]}">
-            <img src="${img}" alt="álbum">
-        </div>
-    `).join('');
-    
-    // Mostrar pantalla de victoria
-    selectors.win.innerHTML = `
-        <div class="win-simple">
-            <h1>¡VICTORIA!</h1>
-            <h2>ELIGE UN ÁLBUM</h2>
-            <div class="albums-grid">${albumsHTML}</div>
-        </div>
-    `;
-    
-    // Reproducir pista al hacer clic
-    document.querySelectorAll('.album').forEach(album => {
-        album.addEventListener('click', () => {
-            const nombreAlbum = album.getAttribute('data-audio');
-            new Audio(`audios/${nombreAlbum}.mp3`).play();
-        });
-    });
-    
-    // Parar el temporizador
-    clearInterval(state.loop);
+    // Oculta las cartas
+    document.querySelector('.tablero').classList.add('oculto');
 }
+
+//document.querySelector('.win').classList.add('show');
 
 generateGame();

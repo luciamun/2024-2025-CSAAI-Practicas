@@ -6,10 +6,8 @@
     font-family: 'DS-Digital';
     src: url('DS-DIGI.TTF') format('truetype');
 }
-.game {
-    display: inline-block;
-}
 
+/* Estructura base */
 html, body {
     width: 100%;
     height: 100%;
@@ -21,31 +19,13 @@ html, body {
     background-position: center;
 }
 
-#cronometro {
-    font-family: 'DS-Digital';
-    font-size: 2.5rem;
-    color: rgb(207, 39, 39);
-    min-width: 150px; /* Ajusta este valor si usas más de 3 dígitos */
-    text-align: center;
-    display: inline-block;
-}
-#mov {
-    font-family: 'Montserrat';
-    font-size: 1.6rem;
-    color: rgb(0, 0, 0);
-    min-width: 150px; /* Ajusta este valor si usas más de 3 dígitos */
-    text-align: center;
-    display: inline-block;
-}
-
-
 /* Contenedor principal */
 .container-blanco {
     background: rgba(255, 255, 255, 0.85);
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    width:600px;;
+    width: 600px;
     max-width: 90vw;
     margin: 50px auto;
     display: flex;
@@ -54,147 +34,165 @@ html, body {
     gap: 20px;
 }
 
+/* Componentes del juego */
+.game {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-/* Botones */
 .controls {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 button {
     background: #671919;
-    color: #FFF;
-    border-radius: 5px;
-    padding: 10px 20px;
+    color: white;
     border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1.1rem;
     cursor: pointer;
-    font-family: Montserrat;
-    font-size: 18pt;
-    width: 160px;
-    text-align: center;
+    transition: all 0.3s;
+    min-width: 140px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 button.disabled {
-    color: #757575;
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
-/* Desplegable Tamaño */
+/* Display de tiempo y movimientos */
+.display {
+    font-family: 'DS-Digital';
+    color: #671919;
+    font-size: 1.5rem;
+    margin: 0 10px;
+}
+
+#cronometro {
+    color: rgb(207, 39, 39);
+}
+
+/* Menú desplegable */
 .size-wrapper {
     position: relative;
 }
 
 .dropdown-options {
     position: absolute;
-    top: 110%;
+    top: 100%;
     left: 0;
-    background: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    z-index: 100;
     overflow: hidden;
-    z-index: 10;
-    width: 160px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    font-family: Montserrat;
-    font-size: 16pt;
-}
-
-.dropdown-options.hidden {
     display: none;
 }
+
+.dropdown-options.show {
+    display: block;
+}
+.oculto {
+    display: none;
+}
+
 
 .dropdown-options .option {
     padding: 10px;
     text-align: center;
     cursor: pointer;
-    color: #671919;
-    background-color: #fff;
+    transition: background 0.2s;
 }
 
 .dropdown-options .option:hover {
-    background-color: #f0f0f0;
-}
-
-/* Displays */
-.display {
-    color:#671919;
-    font-size: 14pt;
-    text-align: center;
+    background: #f0f0f0;
 }
 
 /* Tablero y cartas */
 .grid-container {
     position: relative;
+    width: 100%;
+    min-height: 400px;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.tablero,
-.win {
-    border-radius: 5px;
-    box-shadow: 0 25px 50px rgb(33 33 33 / 25%);
-    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
-    backface-visibility: hidden;
+.grid-container.flipped {
+    transform: rotateY(180deg);
 }
 
 .tablero {
-    padding: 20px;
     display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-gap: 20px;
-    perspective: 1000px;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(253, 248, 230, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 0 auto;
 }
 
-/* Tamaño variable por dimensión */
-.tablero[grid-dimension="2"] .card {
-    width: 120px;
-    height: 120px;
+.tablero[grid-dimension="2"] {
+    grid-template-columns: repeat(2, 1fr);
 }
-
-.tablero[grid-dimension="4"] .card {
-    width: 100px;
-    height: 100px;
+.tablero[grid-dimension="4"] {
+    grid-template-columns: repeat(4, 1fr);
 }
-
-.tablero[grid-dimension="6"] .card {
-    width: 70px;
-    height: 70px;
+.tablero[grid-dimension="6"] {
+    grid-template-columns: repeat(6, 1fr);
 }
 
 .card {
+    aspect-ratio: 1;
     position: relative;
-    cursor: pointer;
     transform-style: preserve-3d;
     transition: transform 0.6s;
+    cursor: pointer;
 }
 
 .card.flipped {
     transform: rotateY(180deg);
 }
 
-.card-front,
-.card-back {
+.card-front, .card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 5px;
     backface-visibility: hidden;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
 .card-front {
-    background:#671919;
+    background: #671919;
 }
 
 .card-back {
     background: #FDF8E6;
     transform: rotateY(180deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .card-back img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
     border-radius: 5px;
 }
 
@@ -205,58 +203,97 @@ button.disabled {
     left: 0;
     width: 100%;
     height: 100%;
-    text-align: center;
-    background: #FDF8E6;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(253, 248, 230, 0.95);
+    border-radius: 10px;
+    z-index: 50;
+    padding: 30px;
+    box-sizing: border-box;
     transform: rotateY(180deg);
+    backface-visibility: hidden;
 }
 
-.win-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 21pt;
-    color: #671919;
+.win.show {
+    display: flex;
 }
 
-.highlight {
-    color: #6f00fc;
-}
-.win-simple {
+.win-content {
     text-align: center;
-    padding: 20px;
+    max-width: 500px;
+    width: 100%;
 }
 
-.win-simple h1 {
+.win h1 {
     color: #671919;
-    font-size: 3rem;
-    margin-bottom: 10px;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
 }
 
-.win-simple h2 {
+.win h2 {
     color: #671919;
-    font-size: 2rem;
-    margin-bottom: 30px;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
 }
 
 .albums-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 20px;
-    padding: 20px;
+    width: 100%;
 }
 
 .album {
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: all 0.3s;
+    text-align: center;
 }
 
 .album:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .album img {
     width: 100%;
-    border-radius: 5px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #671919;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.album p {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #671919;
+    font-weight: bold;
+}
+
+/* Tamaños específicos de cartas */
+.tablero[grid-dimension="2"] .card {
+    width: 120px;
+}
+.tablero[grid-dimension="4"] .card {
+    width: 100px;
+}
+.tablero[grid-dimension="6"] .card {
+    width: 70px;
+}
+
+.victoria {
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.9); /* o el que quieras */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+.carta {
+    position: relative;
+    z-index: 1;
 }
