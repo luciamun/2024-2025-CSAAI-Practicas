@@ -36,7 +36,7 @@ const generateGame = () => {
 
     if (state.loop) clearInterval(state.loop);
 
-    const img = ['Bon Jovi.jpeg', 'alphaville.jpeg', 'direstraits.jpeg', 'recy.jpeg', 
+    const img = ['Bon Jovi.jpg', 'alphaville.jpeg', 'direstraits.jpeg', 'recy.jpeg', 
         'scorpions.jpeg', 'gun.jpeg', 'walls.jpeg', 'lhaine.jpg', 'malaika.jpg', 
         'rels.jpg', 'choco.jpg', 'La Madrugá.jpg', 'El Ultimo de la Fila.jpeg', 'capri.jpg',
         'dela 2.jpg', 'Moonlight.jpg', 'Oasis.jpg', 'Turtles.jpg'];
