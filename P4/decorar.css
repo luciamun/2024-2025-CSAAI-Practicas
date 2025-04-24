@@ -222,3 +222,41 @@ button.disabled {
 .highlight {
     color: #6f00fc;
 }
+.win-simple {
+    text-align: center;
+    padding: 20px;
+}
+
+.win-simple h1 {
+    color: #671919;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.win-simple h2 {
+    color: #671919;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.album {
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.album:hover {
+    transform: scale(1.1);
+}
+
+.album img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
