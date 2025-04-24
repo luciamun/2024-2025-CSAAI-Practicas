@@ -8,6 +8,60 @@ html {
     height: 100%;
     font-family: Montserrat;
 }
+@font-face {
+    font-family: 'DS-Digital';
+    src: url('DS-DIGI.TTF') format('truetype');
+  }
+  #cronometro {
+    font-family: 'DS-Digital', sans-serif;
+    font-size: 2.5rem;
+    color: rgb(207, 39, 39);
+  }
+
+  body {
+
+    background-image: url('fondoo.jpg');
+  }
+  #sizeSelect {
+    font-family: Montserrat;
+    font-size: 14pt;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.size-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #282A3A;
+    color: white;
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 100%;
+    z-index: 10;
+    text-align: left;
+    font-family: Montserrat;
+    font-size: 16pt;
+}
+
+.dropdown .option {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #444;
+}
+
+.dropdown .option:hover {
+    background-color: #3e4157;
+}
+
+.hidden {
+    display: none;
+}
 
 .game {
     position: absolute;

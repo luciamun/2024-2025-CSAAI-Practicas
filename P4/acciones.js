@@ -3,7 +3,10 @@ const selectors = {
     tablero: document.querySelector('.tablero'),
     movimientos: document.querySelector('.movimientos'),
     timer: document.querySelector('.timer'),
-    comenzar: document.querySelector('button'),
+    comenzar: document.querySelector('#startBtn'),
+    resetBtn: document.querySelector('#resetBtn'),
+    sizeBtn: document.querySelector('#sizeBtn'),
+    sizeSelect: document.querySelector('#sizeSelect'),
     win: document.querySelector('.win')
 }
 
@@ -23,7 +26,9 @@ const generateGame = () => {
         throw new Error("Las dimensiones del tablero deben ser un número par.")
     }
 
-    const img = ['album.jpeg', 'alphaville.jpeg', 'direstraits.jpeg', 'recy.jpeg', 'scorpions.jpeg', 'gun.jpeg', 'walls.jpeg']
+    const img = ['album.jpeg', 'alphaville.jpeg', 'direstraits.jpeg', 'recy.jpeg', 
+        'scorpions.jpeg', 'gun.jpeg', 'walls.jpeg', 'lhaine.jpg', 'malaika.jpg', 
+        'rels.jpg', 'choco.jpg', 'dela.jpg']
     const picks = pickRandom(img, (dimensions * dimensions) / 2)
     const items = shuffle([...picks, ...picks])
 
@@ -40,6 +45,7 @@ const generateGame = () => {
 
     const parser = new DOMParser().parseFromString(cards, 'text/html')
     selectors.tablero.replaceWith(parser.querySelector('.tablero'))
+    selectors.tablero = document.querySelector('.tablero')
 }
 
 const pickRandom = (array, items) => {
@@ -67,10 +73,25 @@ const shuffle = array => {
 const attachEventListeners = () => {
     document.addEventListener('click', event => {
         const card = event.target.closest('.card')
-        const isButton = event.target.nodeName === 'BUTTON'
+        const id = event.target.id
 
-        if (isButton && !event.target.classList.contains('disabled')) {
+        if (id === 'startBtn' && !selectors.comenzar.classList.contains('disabled')) {
             startGame()
+        }
+
+        if (id === 'resetBtn') {
+            resetGame()
+        }
+
+        if (id === 'sizeBtn') {
+            selectors.sizeSelect.classList.toggle('hidden')
+        }
+
+        if (event.target.classList.contains('option')) {
+            const newSize = event.target.getAttribute('data-size')
+            selectors.tablero.setAttribute('grid-dimension', newSize)
+            selectors.sizeSelect.classList.add('hidden')
+            resetGame()
         }
 
         if (!card || state.lockBoard || card.classList.contains('flipped') || card.classList.contains('matched')) return
@@ -86,7 +107,7 @@ const startGame = () => {
     state.loop = setInterval(() => {
         state.totalTime++
         selectors.movimientos.innerText = `${state.totalFlips} movimientos`
-        selectors.timer.innerText = `tiempo: ${state.totalTime} sec`
+        selectors.timer.innerText = `tiempo: ${state.totalTime}`
     }, 1000)
 }
 
@@ -134,6 +155,21 @@ const flipCard = card => {
 const resetFlippedCards = () => {
     state.flippedCards = []
     state.lockBoard = false
+}
+
+const resetGame = () => {
+    clearInterval(state.loop)
+    state.gameStarted = false
+    state.flippedCards = []
+    state.totalFlips = 0
+    state.totalTime = 0
+    state.lockBoard = false
+    selectors.comenzar.classList.remove('disabled')
+    selectors.movimientos.innerText = '0 movimientos'
+    selectors.timer.innerText = 'tiempo: 0'
+    selectors.gridContainer.classList.remove('flipped')
+    selectors.win.innerHTML = ''
+    generateGame()
 }
 
 generateGame()
