@@ -36,10 +36,10 @@ const generateGame = () => {
 
     if (state.loop) clearInterval(state.loop);
 
-    const img = ['album.jpeg', 'alphaville.jpeg', 'direstraits.jpeg', 'recy.jpeg', 
+    const img = ['Bon Jovi.jpeg', 'alphaville.jpeg', 'direstraits.jpeg', 'recy.jpeg', 
         'scorpions.jpeg', 'gun.jpeg', 'walls.jpeg', 'lhaine.jpg', 'malaika.jpg', 
-        'rels.jpg', 'choco.jpg', 'dela.jpg', 'ultimo.jpeg', 'capri.jpg',
-        'dela 2.jpg', 'cruz.jpg', 'oasis.jpg', 'turtles.jpg'];
+        'rels.jpg', 'choco.jpg', 'La Madrugá.jpg', 'El Ultimo de la Fila.jpeg', 'capri.jpg',
+        'dela 2.jpg', 'Moonlight.jpg', 'Oasis.jpg', 'Turtles.jpg'];
     const picks = pickRandom(img, (state.dimension * state.dimension) / 2);
     const items = shuffle([...picks, ...picks]);
 
@@ -199,7 +199,7 @@ const victory = () => {
     document.querySelectorAll('.album').forEach(album => {
         album.addEventListener('click', () => {
             const audioFile = album.getAttribute('data-audio');
-            const audio = new Audio(`audios/${audioFile}.mp3`);
+            const audio = new Audio(`${audioFile}.mp3`);
             audio.play().catch(e => console.error("Error al reproducir audio:", e));
         });
     });
