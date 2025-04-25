@@ -38,7 +38,7 @@ const generateGame = () => {
 
     const img = ['Bon Jovi.jpg', 'Alphaville.jpeg', 'Dire Straits.jpeg', 'Casanova.jpeg', 
         'Scorpions.jpeg', 'Guns N` Roses.jpeg', 'Luna18.jpeg', 'Lhaine.jpg', 'Malaika.jpg', 
-        'Rels B.jpg', 'choco.jpg', 'La Madrugá.jpg', 'El Ultimo de la Fila.jpeg', 'Capricornio.jpg',
+        'Rels B.jpg', 'Choclock.jpg', 'La Madrugá.jpg', 'El Ultimo de la Fila.jpeg', 'Capricornio.jpg',
         '1000 Motivos.jpg', 'Moonlight.jpg', 'Oasis.jpg', 'Turtles.jpg', 'Rehab en lamarosa.jpeg'];
     const picks = pickRandom(img, (state.dimension * state.dimension) / 2);
     const items = shuffle([...picks, ...picks]);
