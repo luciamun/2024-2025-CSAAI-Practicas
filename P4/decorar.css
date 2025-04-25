@@ -140,7 +140,7 @@ button.disabled {
     display: grid;
     gap: 15px;
     padding: 20px;
-    *background: rgb(253, 248, 230);*
+    background: rgb(253, 248, 230);
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     margin: 0 auto;
