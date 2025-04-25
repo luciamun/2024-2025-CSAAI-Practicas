@@ -21,7 +21,7 @@ html, body {
 
 /* Contenedor principal */
 .container-blanco {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.922);
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
@@ -140,7 +140,7 @@ button.disabled {
     display: grid;
     gap: 15px;
     padding: 20px;
-    background: rgba(253, 248, 230, 0.7);
+    *background: rgb(253, 248, 230);*
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     margin: 0 auto;

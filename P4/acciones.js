@@ -58,7 +58,6 @@ const generateGame = () => {
     const newTablero = parser.querySelector('.tablero');
     selectors.tablero.replaceWith(newTablero);
     selectors.tablero = document.querySelector('.tablero'); // Asegura que sea el nuevo del DOM
-
     selectors.win = document.querySelector('.win');
     selectors.gridContainer = document.querySelector('.grid-container');
     selectors.win = document.querySelector('.win');
