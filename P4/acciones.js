@@ -36,10 +36,10 @@ const generateGame = () => {
 
     if (state.loop) clearInterval(state.loop);
 
-    const img = ['Bon Jovi.jpg', 'alphaville.jpeg', 'direstraits.jpeg', 'recy.jpeg', 
-        'scorpions.jpeg', 'gun.jpeg', 'walls.jpeg', 'lhaine.jpg', 'malaika.jpg', 
-        'rels.jpg', 'choco.jpg', 'La Madrugá.jpg', 'El Ultimo de la Fila.jpeg', 'capri.jpg',
-        'dela 2.jpg', 'Moonlight.jpg', 'Oasis.jpg', 'Turtles.jpg'];
+    const img = ['Bon Jovi.jpg', 'Alphaville.jpeg', 'Dire Straits.jpeg', 'Casanova.jpeg', 
+        'Scorpions.jpeg', 'Guns N` Roses.jpeg', 'Luna18.jpeg', 'Lhaine.jpg', 'Malaika.jpg', 
+        'Rels B.jpg', 'choco.jpg', 'La Madrugá.jpg', 'El Ultimo de la Fila.jpeg', 'Capricornio.jpg',
+        '1000 Motivos.jpg', 'Moonlight.jpg', 'Oasis.jpg', 'Turtles.jpg', 'Rehab en lamarosa.jpeg'];
     const picks = pickRandom(img, (state.dimension * state.dimension) / 2);
     const items = shuffle([...picks, ...picks]);
 
