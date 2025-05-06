@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulación de envío de paquetes de datos</title>
+  <link rel="stylesheet" href="decorar.css" />
+</head>
+<body>
+  <div class="controls">
+    <button id="btnNet">Generar Red</button>
+    <button id="btnMinPath">Calcular ruta</button>
+  </div>
+
+  <canvas id="networkCanvas" width="800" height="400"></canvas>
+
+  <!-- Scripts al final del body para asegurar carga del DOM -->
+  <script src="dijkstra.js" defer></script>
+  <script src="acciones.js" defer></script>
+</body>
+</html>
