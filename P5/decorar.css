@@ -1,5 +1,5 @@
 canvas {
-    border: 1px solid black;
+    border: 1px solid rgb(254, 193, 221);
   }
   
   .controls {
@@ -9,7 +9,7 @@ canvas {
   }
   
   button {
-    background: #282A3A;
+    background: #ff76bd;
     color: #FFF;
     border-radius: 2px;
     padding: 10px 20px;
