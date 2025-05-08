@@ -145,7 +145,6 @@ function crearRedAleatoriaConCongestion(numNodos, numConexiones) {
   return nodos;
 }
 
-// Dibujar red
 function drawNet(nnodes) {
   // Dibujar conexiones
   nnodes.forEach(nodo => {
@@ -153,6 +152,7 @@ function drawNet(nnodes) {
       ctx.beginPath();
       ctx.moveTo(nodo.x, nodo.y);
       ctx.lineTo(conexion.x, conexion.y);
+      ctx.strokeStyle = '#999'; // color gris para líneas de conexión
       ctx.stroke();
 
       ctx.font = '12px Arial';
@@ -169,17 +169,20 @@ function drawNet(nnodes) {
   nnodes.forEach(nodo => {
     ctx.beginPath();
     ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
-    ctx.fillStyle = 'blue';
+    ctx.fillStyle = '#ff94c2';       // Relleno del nodo (rosita)
     ctx.fill();
+    ctx.strokeStyle = '#ff69b4';     // Borde rosa fuerte
+    ctx.lineWidth = 2;
     ctx.stroke();
 
     ctx.font = '12px Arial';
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'white';         // Color del texto
     ctx.textAlign = 'center';
     const desc = "N" + nodo.id + " delay " + Math.floor(nodo.delay);
     ctx.fillText(desc, nodo.x, nodo.y + 5);
   });
 }
+
 
 // Evento para generar red
 btnCNet.onclick = () => {
